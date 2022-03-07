@@ -1,0 +1,72 @@
+import json
+
+
+f = open('movies.json','r')
+d =json.load(f)
+#print(d)
+#print(type(d))
+count = {}
+
+for i in d:
+    if (i['director']) not in count:
+        count[i['director']] = 1
+    else:
+        count[i['director']] += 1
+print(max(count.items(),key = lambda x :x[1]))
+
+d1 = {}
+for i in d:
+    e = i['genre']
+    for j in e:
+    
+        
+        j1 = j.strip()
+        
+        if j1 not in d1:
+            d1[j1] = 1
+        else:
+            d1[j1] += 1
+#print(d1)
+
+print(max(d1.items(),key = lambda x:x[1]))
+
+
+d2 ={}
+for i in d:
+    if (i['name'],i['imdb_score']) not in d2:
+        d2[i['name']] = i['imdb_score']
+    else:
+        d2[i['name']].append((i['imdb_score']))
+        
+
+        
+m1 = sorted(d2.items(), key=lambda x:x[1], reverse=True)
+for i in range(0, 10):
+    print(m1[i])
+
+
+    
+    d3 ={}
+    for i in d:
+        if (i['name'],i['imdb_score']) not in d3:
+            d3[i['name']] = i['imdb_score']
+        else:
+            d3[i['name']].append((i['imdb_score']))
+    #print(d3)
+m2 = min(d3.items(),key = lambda x: x[1])
+print(m2)
+
+
+d4 ={}
+for i in range(0, len(d)):
+    if i > 99:
+        break
+    else:
+        if d[i]['director'] not in d4:
+            d4[d[i]['director']] = [d[i]['imdb_score']]
+        else:
+            d4[d[i]['director']].append(d[i]['imdb_score'])
+
+            
+w4 = max(d4.items(), key=lambda x:sum(x[1]) / len(x[1]))
+w4

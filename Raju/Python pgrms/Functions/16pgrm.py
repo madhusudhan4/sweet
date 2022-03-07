@@ -1,0 +1,17 @@
+def fun(a,b,c=10,d=20,*args,**kwargs):
+    print("_________")
+    print("poditional arguements")
+    print(a,b)
+    print("_________")
+    print("default arguements")
+    print(c,d)
+    print("_________")
+    print("variable arguements")
+    print(args)
+    print("_________")
+    print("variable keyword arguements")
+    print(kwargs)
+    print("_________")
+res = fun(1,2,3,4,5,6,7,8,67,34,89,q=19,j=34)
+print(res)
+
